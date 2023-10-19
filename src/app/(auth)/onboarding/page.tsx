@@ -9,9 +9,11 @@ async function Page() {
   if (!user) return null; // to avoid typescript warnings
 
   const userInfo = await fetchUser(user.id);
+  console.log("User info",userInfo?.username, user?.username);
+  
   if (userInfo?.onboarded) redirect("/");
 
-  const userData = {
+  const userData = { 
     id: user.id,
     objectId: userInfo?._id,
     username: userInfo ? userInfo?.username : user.username,
