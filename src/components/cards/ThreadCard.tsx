@@ -38,6 +38,8 @@ const ThreadCard = ({ id,
     comments,
     isComment
 }: Props) => {
+    // Calculate the message count
+    const messageCount = comments.length;
     return (
         <article className={`flex w-full flex-col rounded- ${isComment ? ' px-0 xs:px-7' : ' bg-dark-2 p-7'}`}>
             <div className="flex items-start justify-between">
@@ -72,6 +74,12 @@ const ThreadCard = ({ id,
                                     className='cursor-pointer object-contain'
                                 />
                                 <Link href={`/thread/${id}`}>
+                                    {messageCount > 0 && (
+                                        <p className='absolute ml-3 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2 '>
+                                            {messageCount} 
+
+                                        </p>
+                                    )}
                                     <Image
                                         src='/assets/reply.svg'
                                         alt='heart'
@@ -79,6 +87,7 @@ const ThreadCard = ({ id,
                                         height={24}
                                         className='cursor-pointer object-contain'
                                     />
+
                                 </Link>
                                 <Image
                                     src='/assets/repost.svg'
